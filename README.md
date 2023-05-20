@@ -1,5 +1,2 @@
-# TDD-practice
-
-1. edit ts file
-2. transpile `tsc src/index.ts`
-3. run tests in .spec file `npm test`
+# Cypress unittest
+[![CI](https://github.com/YahyaQandel/Cypress-unittest/actions/workflows/ci.yml/badge.svg)](https://github.com/YahyaQandel/Cypress-unittest/actions/workflows/ci.yml)
