@@ -11,15 +11,33 @@ describe('Testing Order', () => {
         expect(order.TotalPrice).to.equal(10);
     });
 
-    it.skip('should remove an item from the order', () => {
-        // write your test here
+    it('should remove an item from the order', () => {
+        const order = new Order();
+        const pepsi = new OrderItem('Pepsi', 10);
+        const water = new OrderItem('Water', 3);
+        order.addItem(pepsi);
+        order.addItem(water);
+        order.removeItem(pepsi);
+        for (const item of order.Items) {
+            expect(item.Name).to.not.equal('Pepsi');
+        }
+        expect(order.Items.length).to.equal(1);
+        expect(order.TotalPrice).to.equal(3);
     });
 
-    it.skip('should add an item  to the order multiple times', () => {
-       // write your test here
+    it('should add an item  to the order multiple times', () => {
+        const order = new Order();
+        const pepsi = new OrderItem('Pepsi', 10);
+        order.addItem(pepsi);
+        order.addItem(pepsi);
+        expect(order.Items.length).to.equal(2);
+        expect(order.TotalPrice).to.equal(20);
     });
 
-    it.skip('should not proceed to checkout if user balance is insufficient', () => {
-       // write your test here
+    it('should not proceed to checkout if user balance is insufficient', () => {
+        const order = new Order();
+        const pepsi = new OrderItem('Pepsi', 10);
+        order.addItem(pepsi);
+        expect(() => order.proceedToCheckout(5)).to.throw('Insufficient balance to proceed to checkout');
     });
 });

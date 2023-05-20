@@ -28,7 +28,11 @@ export class Order {
     }
 
     removeItem(item: OrderItem) {
-        this.items.splice(this.items.length - 1, 1);
+        const index = this.items.indexOf(item);
+        if (index > -1) {
+            this.items.splice(index, 1);
+            this.totalPrice -= item.Price;
+        }
     }
 
     proceedToCheckout(userBalance: number) {
